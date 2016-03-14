@@ -13,7 +13,7 @@
  *  ASCII decoding assumes file is UTF-8. Seems to work for the examples...
  *
  * Usage:
- *  var loader = new THREE.STLLoader();
+ *  var loader = new STLLoader();
  *  loader.load( './models/stl/slotted_disk.stl', function ( geometry ) {
  *    scene.add( new THREE.Mesh( geometry ) );
  *  });
@@ -28,15 +28,15 @@
 
  module.exports = function (THREE) {
 
-   THREE.STLLoader = function ( manager ) {
+   var STLLoader = function ( manager ) {
 
    	this.manager = ( manager !== undefined ) ? manager : THREE.DefaultLoadingManager;
 
    };
 
-   THREE.STLLoader.prototype = {
+   STLLoader.prototype = {
 
-   	constructor: THREE.STLLoader,
+   	constructor: STLLoader,
 
    	load: function ( url, onLoad, onProgress, onError ) {
 
@@ -490,5 +490,7 @@
    	 };
 
    }
+
+   return STLLoader
 
  }
