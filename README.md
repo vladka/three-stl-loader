@@ -17,8 +17,8 @@ var loader = new STLLoader()
 
 loader.load('./path/to/daaaamn.stl', function (geometry) {
   var material = new THREE.MeshNormalMaterial()
-	var mesh = new THREE.Mesh(geometry, material)
-	scene.add(mesh)
+  var mesh = new THREE.Mesh(geometry, material)
+  scene.add(mesh)
 })
 
 ```
