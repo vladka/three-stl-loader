@@ -31,13 +31,13 @@
 
  module.exports = function (THREE) {
 
-   THREE.STLLoader = function ( manager ) {
+   var STLLoader = function ( manager ) {
 
    	this.manager = ( manager !== undefined ) ? manager : THREE.DefaultLoadingManager;
 
    };
 
-   THREE.STLLoader.prototype = {
+   STLLoader.prototype = {
 
    	constructor: THREE.STLLoader,
 
@@ -284,4 +284,5 @@
 
    }
 
+   return STLLoader
  }
