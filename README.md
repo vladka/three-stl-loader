@@ -4,6 +4,8 @@
 
 ## install
 
+`npm i --save three`
+
 `npm i --save three-stl-loader`
 
 ## usage
