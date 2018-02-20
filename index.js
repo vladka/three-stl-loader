@@ -76,18 +76,24 @@
    			// plentiful.  So, check the first 5 bytes for 'solid'.
 
    			// US-ASCII ordinal values for 's', 'o', 'l', 'i', 'd'
-   			var solid = [ 115, 111, 108, 105, 100 ];
+        var solid = [ 115, 111, 108, 105, 100 ];
+        var SOLID = [ 83, 79, 76, 73, 68 ];
 
    			for ( var i = 0; i < 5; i ++ ) {
 
    				// If solid[ i ] does not match the i-th byte, then it is not an
    				// ASCII STL; hence, it is binary and return true.
 
-   				if ( solid[ i ] != reader.getUint8( i, false ) ) return true;
+   				if ( solid[ i ] != reader.getUint8( i, false ) ) {
+            if ( SOLID[ i ] != reader.getUint8( i, false ) ) {
+              reader.setUint8(i, solid[ i ]);
+              return true;
+            }
+          }
 
-    			}
+        }
 
-   			// First 5 bytes read "solid"; declare it to be an ASCII STL
+   			// First 5 bytes read "solid" or uppercase variations; declare it to be an ASCII STL
    			return false;
 
    		};
