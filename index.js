@@ -139,7 +139,6 @@ module.exports = function (THREE) {
                     }
                 }
 
-                console.log(reader, sLetterIndex);
                 for (var i = 0; i < 5; i++) {
 
                     // If solid[ i ] does not match the i-th byte, then it is not an
