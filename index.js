@@ -121,6 +121,25 @@ module.exports = function (THREE) {
                 var solid = [115, 111, 108, 105, 100];
                 var SOLID = [83, 79, 76, 73, 68];
 
+                var sLetterIndex = 0;
+                var temp;
+
+                // Some models might have extra symbol or space in front of solid word, we need to find it out
+                for (var i = 0; i < 5; i++) {
+                    temp = reader.getUint8(i, false)
+                    if (temp == solid[0] || temp === SOLID[0]){
+                        sLetterIndex = i;
+                    }
+                }
+
+                // If s letter has a space or something in foront of it - we need to shift it back to index 0
+                if (sLetterIndex > 0) {
+                    for (var i = sLetterIndex; i < sLetterIndex + 5; i++) {
+                        reader.setUint8(i - sLetterIndex, reader.getUint8(i, false))
+                    }
+                }
+
+                console.log(reader, sLetterIndex);
                 for (var i = 0; i < 5; i++) {
 
                     // If solid[ i ] does not match the i-th byte, then it is not an
